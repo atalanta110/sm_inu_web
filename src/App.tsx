@@ -6,6 +6,7 @@ import { GlobalStyles, ToastWrapper } from './styles/globalStyles'
 
 const Header = lazy(() => import('./components/Header'))
 const Home = lazy(() => import('./pages/Home'))
+const LeaderBoards = lazy(() => import('./pages/LeaderBoards'))
 
 const App: React.FC = () => {
   return (
@@ -27,6 +28,7 @@ const App: React.FC = () => {
         <Header />
         <Routes>
           <Route path="/" element={<Home />} />
+          <Route path="/leaderboards" element={<LeaderBoards />} />
         </Routes>
       </Suspense>
     </Router>
