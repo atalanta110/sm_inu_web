@@ -14,7 +14,6 @@ const MenuContainer = styled(ContainerRow)`
 const Menu: React.FC = () => {
   return (
     <MenuContainer justifyContent={'flex-start'} width={'fit-content'}>
-      <MenuItem to="/about">About Game</MenuItem>
       <MenuItem to="/leaderboards">Leaderboards</MenuItem>
       <MenuItem to="/transaction">Transaction</MenuItem>
     </MenuContainer>

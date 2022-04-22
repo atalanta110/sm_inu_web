@@ -1,10 +1,11 @@
 import React, { lazy, Suspense } from 'react'
-import { BrowserRouter as Router, Route } from 'react-router-dom'
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
 import './App.scss'
 import Loader from './components/Loader'
 import { GlobalStyles, ToastWrapper } from './styles/globalStyles'
 
 const Header = lazy(() => import('./components/Header'))
+const Home = lazy(() => import('./pages/Home'))
 
 const App: React.FC = () => {
   return (
@@ -24,6 +25,9 @@ const App: React.FC = () => {
       />
       <Suspense fallback={<Loader />}>
         <Header />
+        <Routes>
+          <Route path="/" element={<Home />} />
+        </Routes>
       </Suspense>
     </Router>
   )
