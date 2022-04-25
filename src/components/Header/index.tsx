@@ -16,7 +16,7 @@ const HeaderContainer = styled(ContainerRow)`
 const Header: React.FC = () => {
   return (
     <HeaderContainer>
-      <ContainerRow width={'fit-content'}>
+      <ContainerRow width={'fit-content'} justifyContent={'flex-start'}>
         <Logo />
         <Menu />
       </ContainerRow>

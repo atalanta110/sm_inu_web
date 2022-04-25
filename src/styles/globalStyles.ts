@@ -366,10 +366,12 @@ export const TextSubTitle = styled.span`
   line-height: 1.6;
   margin: 1rem 0;
 `
-export const TextMain = styled.span`
-  color: var(--primary-text);
-  font-size: 1.25rem;
-  font-weight: 600;
+export const TextMain = styled.span<{
+  color?: string
+}>`
+  color: ${({ color }) => (color ? color : 'var(--primary-text)')};
+  font-size: 1.55rem;
+  font-weight: 700;
   line-height: 1.6;
   margin: 1rem 0;
   text-align: center;

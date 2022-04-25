@@ -1,5 +1,4 @@
 import React from 'react'
-import { MainButton } from '../../components/Buttons/MainButton'
 import {
   ComponentWrapper,
   BoxCardWithoutBorder,
@@ -8,51 +7,41 @@ import {
   ImageContainer,
 } from '../../styles/globalStyles'
 import { isMobile } from 'react-device-detect'
-import BANNER_MAIN from '../../assets/images/banner-main.svg'
-import ARROW_RIGHT_ROUNDED from '../../assets/images/arrow-right-rounded.svg'
+import BANNER_MAIN from '../../assets/images/game/Raid_Image_2.jpg'
 
 export const IntroducingBox: React.FC = () => {
   return (
     <ComponentWrapper margin={'50px 0 0'} padding={'24px'}>
       <ContainerRow>
-        <BoxCardWithoutBorder flexDirection={'column'} boxWidth={'40%'} alignItems={'flex-start'}>
+        <BoxCardWithoutBorder flexDirection={'column'} boxWidth={'60%'} alignItems={'flex-start'}>
           <TextCustom
             color={'var(--primary-text)'}
             fontSize={isMobile ? '2rem' : '3.2rem'}
             fontWeight={700}
             fontFamily={'RubikBold'}
-            lineHeight={1.2}
+            lineHeight={1.5}
             textAlign={'left'}
           >
-            Fans Love Live Content Now They Can Collect It.
+            Moonshot Voyage
           </TextCustom>
           <TextCustom
             color={'var(--primary-text)'}
-            fontSize={isMobile ? '0.8rem' : '1rem'}
+            fontSize={isMobile ? '0.8rem' : '1.1rem'}
             fontWeight={100}
             fontFamily={'LatoThin'}
-            lineHeight={1.5}
+            lineHeight={1.6}
             textAlign={'left'}
             style={{ marginTop: '10px' }}
           >
-            SafeMoon Inu Turns the Most Epic Moments of Live Content into Collectibles for Fans
+            Moonshot Voyage is an upcoming launch title on the SMI Play platform. It is a top-down looter shooter game
+            with a play-to-earn system based on SMI Play Token Items. Take a role of a space bounty hunter and traverse
+            an unknown galaxy after being sucked into a black hole while trying to find a legendary spaceship - the
+            Moonshot. It will not be an easy task though... Fight aliens, monsters, ghosts and other deadly creatures
+            along the way to reach the Moonshot and all its secrets.
           </TextCustom>
-          <BoxCardWithoutBorder boxWidth={'100%'} justifyContent={'flex-start'} padding={'0px'} margin={'0px'}>
-            <MainButton
-              width={'fit-content'}
-              borderRadius={'24px'}
-              padding={'24px 24px'}
-              backgroundColor={'var(--secondary)'}
-              margin={'20px 0'}
-              onClick={() => (window.location.href = '/')}
-            >
-              Contact Us &nbsp;
-              <ImageContainer src={ARROW_RIGHT_ROUNDED} width={'36px'} />
-            </MainButton>
-          </BoxCardWithoutBorder>
         </BoxCardWithoutBorder>
         <BoxCardWithoutBorder>
-          <ImageContainer src={BANNER_MAIN} width={'100%'} style={{ marginTop: '-15%' }} />
+          <ImageContainer src={BANNER_MAIN} width={'70%'} style={{ marginTop: '-5%', borderRadius: 0 }} />
         </BoxCardWithoutBorder>
       </ContainerRow>
     </ComponentWrapper>
