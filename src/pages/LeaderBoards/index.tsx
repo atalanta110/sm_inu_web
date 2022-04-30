@@ -8,6 +8,7 @@ import {
   TextCustom,
 } from '../../styles/globalStyles'
 import { LeaderBoardItem } from './LeaderBoardItem'
+import Banner from '../../components/Banners'
 import Pagination from '../../components/Pagination'
 import Checkbox from '../../components/Checkbox'
 
@@ -174,6 +175,13 @@ const LeaderBoards: React.FC = () => {
 
   return (
     <PageWrapper>
+      <Banner
+        mainTitle={'Leaderboards'}
+        subTitle={'Moonshot Voyage'}
+        summary={
+          "Moonshot Voyage is an upcoming launch title on the SMI Play platform. It's a top-down looter shooter game with a play-to-earn system based on SMI Play Token Items."
+        }
+      />
       <ComponentWrapper margin={'50px 0 0'} padding={'24px'}>
         <ContainerColumn justifyContent={'flex-start'} width={'100%'} padding={'20px 0 0 20px'} margin={'0'}>
           <ContainerRow justifyContent={'space-between'} padding={'10px'} backgroundColor={'var(--dark-navy)'}>
