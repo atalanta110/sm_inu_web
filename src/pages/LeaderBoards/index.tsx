@@ -15,119 +15,131 @@ import Checkbox from '../../components/Checkbox'
 const PageSize = 10
 
 // Lorem Data
-const ranksList = [
-  {
-    creator: 'sA-01',
-    rank: '@spOrk',
-    points: 67,
-    checked: false,
-  },
-  {
-    creator: 'sA-02',
-    rank: '@spOrk',
-    points: 67,
-    checked: false,
-  },
-  {
-    creator: 'sA-03',
-    rank: '@spOrk',
-    points: 67,
-    checked: false,
-  },
-  {
-    creator: 'sA-04',
-    rank: '@spOrk',
-    points: 67,
-    checked: false,
-  },
-  {
-    creator: 'sA-05',
-    rank: '@spOrk',
-    points: 67,
-    checked: false,
-  },
-  {
-    creator: 'sA-06',
-    rank: '@spOrk',
-    points: 67,
-    checked: false,
-  },
-  {
-    creator: 'sA-07',
-    rank: '@spOrk',
-    points: 67,
-    checked: false,
-  },
-  {
-    creator: 'sA-08',
-    rank: '@spOrk',
-    points: 67,
-    checked: false,
-  },
-  {
-    creator: 'sA-09',
-    rank: '@spOrk',
-    points: 67,
-    checked: false,
-  },
-  {
-    creator: 'sA-10',
-    rank: '@spOrk',
-    points: 67,
-    checked: false,
-  },
-  {
-    creator: 'sA-11',
-    rank: '@spOrk',
-    points: 67,
-    checked: false,
-  },
-  {
-    creator: 'sA-12',
-    rank: '@spOrk',
-    points: 67,
-    checked: false,
-  },
-  {
-    creator: 'sA-13',
-    rank: '@spOrk',
-    points: 67,
-    checked: false,
-  },
-  {
-    creator: 'sA-14',
-    rank: '@spOrk',
-    points: 67,
-    checked: false,
-  },
-  {
-    creator: 'sA-15',
-    rank: '@spOrk',
-    points: 67,
-    checked: false,
-  },
-  {
-    creator: 'sA-16',
-    rank: '@spOrk',
-    points: 67,
-    checked: false,
-  },
-]
+// const ranksList = [
+//   {
+//     creator: 'sA-01',
+//     rank: '@spOrk',
+//     points: 67,
+//     checked: false,
+//   },
+//   {
+//     creator: 'sA-02',
+//     rank: '@spOrk',
+//     points: 67,
+//     checked: false,
+//   },
+//   {
+//     creator: 'sA-03',
+//     rank: '@spOrk',
+//     points: 67,
+//     checked: false,
+//   },
+//   {
+//     creator: 'sA-04',
+//     rank: '@spOrk',
+//     points: 67,
+//     checked: false,
+//   },
+//   {
+//     creator: 'sA-05',
+//     rank: '@spOrk',
+//     points: 67,
+//     checked: false,
+//   },
+//   {
+//     creator: 'sA-06',
+//     rank: '@spOrk',
+//     points: 67,
+//     checked: false,
+//   },
+//   {
+//     creator: 'sA-07',
+//     rank: '@spOrk',
+//     points: 67,
+//     checked: false,
+//   },
+//   {
+//     creator: 'sA-08',
+//     rank: '@spOrk',
+//     points: 67,
+//     checked: false,
+//   },
+//   {
+//     creator: 'sA-09',
+//     rank: '@spOrk',
+//     points: 67,
+//     checked: false,
+//   },
+//   {
+//     creator: 'sA-10',
+//     rank: '@spOrk',
+//     points: 67,
+//     checked: false,
+//   },
+//   {
+//     creator: 'sA-11',
+//     rank: '@spOrk',
+//     points: 67,
+//     checked: false,
+//   },
+//   {
+//     creator: 'sA-12',
+//     rank: '@spOrk',
+//     points: 67,
+//     checked: false,
+//   },
+//   {
+//     creator: 'sA-13',
+//     rank: '@spOrk',
+//     points: 67,
+//     checked: false,
+//   },
+//   {
+//     creator: 'sA-14',
+//     rank: '@spOrk',
+//     points: 67,
+//     checked: false,
+//   },
+//   {
+//     creator: 'sA-15',
+//     rank: '@spOrk',
+//     points: 67,
+//     checked: false,
+//   },
+//   {
+//     creator: 'sA-16',
+//     rank: '@spOrk',
+//     points: 67,
+//     checked: false,
+//   },
+// ]
 
 interface IRankLisk {
-  creator: string
-  rank: string
+  username: string
+  difficulty: number
   points: number
+  char1: string
+  char2: string
+  char3: string
+  gun1: string
+  gun2: string
+  gun3: string
+  date: string
   checked: boolean
 }
 
 const LeaderBoards: React.FC = () => {
-  const [rankList, setRankList] = useState<Array<IRankLisk>>(ranksList)
+  const [rankList, setRankList] = useState<Array<IRankLisk>>([])
   const [currentPage, setCurrentPage] = useState<number>(1)
   const [selectAllChecked, setSelectAllChecked] = useState<boolean>(false)
 
   useEffect(() => {
-    setRankList(ranksList)
+    fetch('https://europe-west3-smi-play.cloudfunctions.net/get-leaderboards-t1')
+      .then((response) => response.json())
+      .then((data) => {
+        console.log('data :: ', data)
+        setRankList(data)
+      })
   }, [])
 
   const currentRankList = useMemo(() => {
@@ -185,27 +197,62 @@ const LeaderBoards: React.FC = () => {
       <ComponentWrapper margin={'50px 0 0'} padding={'24px'}>
         <ContainerColumn justifyContent={'flex-start'} width={'100%'} padding={'20px 0 0 20px'} margin={'0'}>
           <ContainerRow justifyContent={'space-between'} padding={'10px'} backgroundColor={'var(--dark-navy)'}>
-            <BoxCardWithoutBorder boxWidth={'5%'} justifyContent={'flex-start'} padding={'2px'} margin={'0'}>
+            {/* <BoxCardWithoutBorder boxWidth={'5%'} justifyContent={'flex-start'} padding={'2px'} margin={'0'}>
               <Checkbox checked={selectAllChecked} onChange={selectAllCheck} />
-            </BoxCardWithoutBorder>
-            <BoxCardWithoutBorder boxWidth={'22%'} justifyContent={'flex-start'} padding={'2px'} margin={'0'}>
+            </BoxCardWithoutBorder> */}
+            <BoxCardWithoutBorder boxWidth={'5%'} justifyContent={'flex-start'} padding={'2px'} margin={'0'}>
               <TextCustom color={'var(--primary-text)'} fontSize={'16px'} fontWeight={300}>
-                Creator
+                Rank
               </TextCustom>
             </BoxCardWithoutBorder>
-            <BoxCardWithoutBorder boxWidth={'22%'} justifyContent={'flex-start'} padding={'2px'} margin={'0'}>
+            <BoxCardWithoutBorder boxWidth={'10%'} justifyContent={'flex-start'} padding={'2px'} margin={'0'}>
               <TextCustom color={'var(--primary-text)'} fontSize={'16px'} fontWeight={300}>
-                Your Rank
+                Username
               </TextCustom>
             </BoxCardWithoutBorder>
-            <BoxCardWithoutBorder boxWidth={'22%'} justifyContent={'flex-start'} padding={'2px'} margin={'0'}>
+            <BoxCardWithoutBorder boxWidth={'8%'} justifyContent={'flex-start'} padding={'2px'} margin={'0'}>
               <TextCustom color={'var(--primary-text)'} fontSize={'16px'} fontWeight={300}>
-                Your Points
+                Difficulty
               </TextCustom>
             </BoxCardWithoutBorder>
-            <BoxCardWithoutBorder boxWidth={'29%'} justifyContent={'flex-start'} padding={'2px'} margin={'0'}>
+            <BoxCardWithoutBorder boxWidth={'7%'} justifyContent={'flex-start'} padding={'2px'} margin={'0'}>
               <TextCustom color={'var(--primary-text)'} fontSize={'16px'} fontWeight={300}>
-                Collect More
+                Points
+              </TextCustom>
+            </BoxCardWithoutBorder>
+            <BoxCardWithoutBorder boxWidth={'10%'} justifyContent={'flex-start'} padding={'2px'} margin={'0'}>
+              <TextCustom color={'var(--primary-text)'} fontSize={'16px'} fontWeight={300}>
+                Char1
+              </TextCustom>
+            </BoxCardWithoutBorder>
+            <BoxCardWithoutBorder boxWidth={'10%'} justifyContent={'flex-start'} padding={'2px'} margin={'0'}>
+              <TextCustom color={'var(--primary-text)'} fontSize={'16px'} fontWeight={300}>
+                Char2
+              </TextCustom>
+            </BoxCardWithoutBorder>
+            <BoxCardWithoutBorder boxWidth={'10%'} justifyContent={'flex-start'} padding={'2px'} margin={'0'}>
+              <TextCustom color={'var(--primary-text)'} fontSize={'16px'} fontWeight={300}>
+                Char3
+              </TextCustom>
+            </BoxCardWithoutBorder>
+            <BoxCardWithoutBorder boxWidth={'10%'} justifyContent={'flex-start'} padding={'2px'} margin={'0'}>
+              <TextCustom color={'var(--primary-text)'} fontSize={'16px'} fontWeight={300}>
+                Gun1
+              </TextCustom>
+            </BoxCardWithoutBorder>
+            <BoxCardWithoutBorder boxWidth={'10%'} justifyContent={'flex-start'} padding={'2px'} margin={'0'}>
+              <TextCustom color={'var(--primary-text)'} fontSize={'16px'} fontWeight={300}>
+                Gun2
+              </TextCustom>
+            </BoxCardWithoutBorder>
+            <BoxCardWithoutBorder boxWidth={'10%'} justifyContent={'flex-start'} padding={'2px'} margin={'0'}>
+              <TextCustom color={'var(--primary-text)'} fontSize={'16px'} fontWeight={300}>
+                Gun3
+              </TextCustom>
+            </BoxCardWithoutBorder>
+            <BoxCardWithoutBorder boxWidth={'10%'} justifyContent={'flex-start'} padding={'2px'} margin={'0'}>
+              <TextCustom color={'var(--primary-text)'} fontSize={'16px'} fontWeight={300}>
+                Date
               </TextCustom>
             </BoxCardWithoutBorder>
           </ContainerRow>
@@ -220,10 +267,18 @@ const LeaderBoards: React.FC = () => {
               return (
                 <LeaderBoardItem
                   key={index}
-                  creator={item.creator}
-                  rank={item.rank}
+                  rank={index + 1}
+                  username={item.username}
+                  difficulty={item.difficulty}
                   points={item.points}
                   checked={item.checked}
+                  char1={item.char1}
+                  char2={item.char2}
+                  char3={item.char3}
+                  gun1={item.gun1}
+                  gun2={item.gun2}
+                  gun3={item.gun3}
+                  date={item.date}
                   checkItem={() => checkItem(index)}
                 />
               )
