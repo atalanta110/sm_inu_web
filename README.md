@@ -1,1 +1,1 @@
-# SafeMoon Inu Website
+# SMI - Moonshot Voyage Website
