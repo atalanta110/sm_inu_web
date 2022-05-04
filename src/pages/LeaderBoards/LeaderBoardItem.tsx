@@ -68,32 +68,44 @@ export const LeaderBoardItem: React.FC<ILeaderBoardItem> = ({
       </BoxCardWithoutBorder>
       <BoxCardWithoutBorder boxWidth={'10%'} justifyContent={'flex-start'} padding={'2px'} margin={'0'}>
         <TextCustom color={'var(--primary-text)'} textAlign={'left'} fontSize={'16px'} fontWeight={300}>
-          {char1}
+          <a href={`${process.env.REACT_APP_CHARACTER_URL}/${char1}`} target="_blank" rel="noreferrer">
+            {char1}
+          </a>
         </TextCustom>
       </BoxCardWithoutBorder>
       <BoxCardWithoutBorder boxWidth={'10%'} justifyContent={'flex-start'} padding={'2px'} margin={'0'}>
         <TextCustom color={'var(--primary-text)'} textAlign={'left'} fontSize={'16px'} fontWeight={300}>
-          {char2}
+          <a href={`${process.env.REACT_APP_CHARACTER_URL}/${char2}`} target="_blank" rel="noreferrer">
+            {char2}
+          </a>
         </TextCustom>
       </BoxCardWithoutBorder>
       <BoxCardWithoutBorder boxWidth={'10%'} justifyContent={'flex-start'} padding={'2px'} margin={'0'}>
         <TextCustom color={'var(--primary-text)'} textAlign={'left'} fontSize={'16px'} fontWeight={300}>
-          {char3}
+          <a href={`${process.env.REACT_APP_CHARACTER_URL}/${char3}`} target="_blank" rel="noreferrer">
+            {char3}
+          </a>
         </TextCustom>
       </BoxCardWithoutBorder>
       <BoxCardWithoutBorder boxWidth={'10%'} justifyContent={'flex-start'} padding={'2px'} margin={'0'}>
         <TextCustom color={'var(--primary-text)'} textAlign={'left'} fontSize={'16px'} fontWeight={300}>
-          {gun1}
+          <a href={`${process.env.REACT_APP_GUN_URL}/${gun1}`} target="_blank" rel="noreferrer">
+            {gun1}
+          </a>
         </TextCustom>
       </BoxCardWithoutBorder>
       <BoxCardWithoutBorder boxWidth={'10%'} justifyContent={'flex-start'} padding={'2px'} margin={'0'}>
         <TextCustom color={'var(--primary-text)'} textAlign={'left'} fontSize={'16px'} fontWeight={300}>
-          {gun2}
+          <a href={`${process.env.REACT_APP_GUN_URL}/${gun2}`} target="_blank" rel="noreferrer">
+            {gun2}
+          </a>
         </TextCustom>
       </BoxCardWithoutBorder>
       <BoxCardWithoutBorder boxWidth={'10%'} justifyContent={'flex-start'} padding={'2px'} margin={'0'}>
         <TextCustom color={'var(--primary-text)'} textAlign={'left'} fontSize={'16px'} fontWeight={300}>
-          {gun3}
+          <a href={`${process.env.REACT_APP_GUN_URL}/${gun3}`} target="_blank" rel="noreferrer">
+            {gun3}
+          </a>
         </TextCustom>
       </BoxCardWithoutBorder>
       <BoxCardWithoutBorder boxWidth={'10%'} justifyContent={'flex-start'} padding={'2px'} margin={'0'}>
