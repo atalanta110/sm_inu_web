@@ -10,7 +10,7 @@ import {
   SubText,
   ImageContainer,
 } from '../../styles/globalStyles'
-import BANNER_THIRD from '../../assets/images/game/Raid_Image_1.jpg'
+import BANNER_THIRD from '../../assets/images/game/Fan_Art_-_Expedition.jpg'
 import { TimelineContainer } from '../../components/TimelineContainer'
 
 const ResponsiveWrapper = styled(ContainerColumn)`
