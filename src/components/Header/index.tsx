@@ -3,6 +3,11 @@ import styled from 'styled-components'
 import { ContainerRow } from '../../styles/globalStyles'
 import Logo from '../Icons/logo'
 import Menu from '../Menu'
+import { LoginButton } from '../Buttons/LoginButton'
+import { useDispatch, useSelector } from 'react-redux'
+import { bindActionCreators } from 'redux'
+import { RootState } from '../../state/reducers'
+import { actionCreators } from '../../state'
 
 const HeaderContainer = styled(ContainerRow)`
   padding: 0.5rem 1rem;
@@ -14,11 +19,27 @@ const HeaderContainer = styled(ContainerRow)`
 `
 
 const Header: React.FC = () => {
+  const globalState = useSelector((state: RootState) => state.global)
+  const dispatch = useDispatch()
+
+  const { openModal } = bindActionCreators(actionCreators, dispatch)
+
   return (
     <HeaderContainer>
       <ContainerRow width={'fit-content'} justifyContent={'flex-start'}>
         <Logo />
         <Menu />
+        {`state: ${globalState.login_modal}`}
+        <LoginButton
+          width={'fit-content'}
+          borderRadius={'24px'}
+          padding={'24px 24px'}
+          backgroundColor={'var(--secondary)'}
+          margin={'20px 0'}
+          onClick={() => openModal(true)}
+        >
+          Login
+        </LoginButton>
       </ContainerRow>
     </HeaderContainer>
   )
