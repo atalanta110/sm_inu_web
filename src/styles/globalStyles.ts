@@ -376,8 +376,10 @@ export const TextMain = styled.span<{
   margin: 1rem 0;
   text-align: center;
 `
-export const TextDescription = styled.span`
-  color: var(--primary-text);
+export const TextDescription = styled.span<{
+  color?: string
+}>`
+  color: ${({ color }) => (color ? color : 'var(--primary-text)')};
   font-size: 14px;
   line-height: 1.6;
   text-align: center;

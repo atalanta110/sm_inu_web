@@ -8,6 +8,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import { RootState } from '../../state/reducers'
 import { actionCreators } from '../../state'
+import LoginModal from '../LoginModal'
 
 const HeaderContainer = styled(ContainerRow)`
   padding: 0.5rem 1rem;
@@ -22,25 +23,27 @@ const Header: React.FC = () => {
   const globalState = useSelector((state: RootState) => state.global)
   const dispatch = useDispatch()
 
-  const { openModal } = bindActionCreators(actionCreators, dispatch)
+  const { openLoginModal } = bindActionCreators(actionCreators, dispatch)
 
   return (
     <HeaderContainer>
       <ContainerRow width={'fit-content'} justifyContent={'flex-start'}>
         <Logo />
         <Menu />
-        {`state: ${globalState.login_modal}`}
+      </ContainerRow>
+      <ContainerRow width={'fit-content'} justifyContent={'flex-end'}>
         <LoginButton
           width={'fit-content'}
           borderRadius={'24px'}
           padding={'24px 24px'}
           backgroundColor={'var(--secondary)'}
           margin={'20px 0'}
-          onClick={() => openModal(true)}
+          onClick={() => openLoginModal(globalState.login_modal ? false : true)}
         >
           Login
         </LoginButton>
       </ContainerRow>
+      <LoginModal />
     </HeaderContainer>
   )
 }
