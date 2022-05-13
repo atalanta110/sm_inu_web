@@ -23,7 +23,7 @@ const Header: React.FC = () => {
   const globalState = useSelector((state: RootState) => state.global)
   const dispatch = useDispatch()
 
-  const { openLoginModal } = bindActionCreators(actionCreators, dispatch)
+  const { openLoginModal, logout } = bindActionCreators(actionCreators, dispatch)
 
   return (
     <HeaderContainer>
@@ -32,16 +32,29 @@ const Header: React.FC = () => {
         <Menu />
       </ContainerRow>
       <ContainerRow width={'fit-content'} justifyContent={'flex-end'}>
-        <LoginButton
-          width={'fit-content'}
-          borderRadius={'24px'}
-          padding={'24px 24px'}
-          backgroundColor={'var(--secondary)'}
-          margin={'20px 0'}
-          onClick={() => openLoginModal(globalState.login_modal ? false : true)}
-        >
-          Login
-        </LoginButton>
+        {globalState?.user_info?.username ? (
+          <LoginButton
+            width={'fit-content'}
+            borderRadius={'24px'}
+            padding={'24px 24px'}
+            backgroundColor={'var(--secondary)'}
+            margin={'20px 0'}
+            onClick={() => logout()}
+          >
+            Logout
+          </LoginButton>
+        ) : (
+          <LoginButton
+            width={'fit-content'}
+            borderRadius={'24px'}
+            padding={'24px 24px'}
+            backgroundColor={'var(--secondary)'}
+            margin={'20px 0'}
+            onClick={() => openLoginModal(globalState.login_modal ? false : true)}
+          >
+            Login
+          </LoginButton>
+        )}
       </ContainerRow>
       <LoginModal />
     </HeaderContainer>

@@ -102,7 +102,7 @@ export default function LoginModal() {
     confirmPassword: '',
   })
 
-  const { openLoginModal } = bindActionCreators(actionCreators, dispatch)
+  const { openLoginModal, setUserData } = bindActionCreators(actionCreators, dispatch)
 
   const toggleLoginModal = () => {
     openLoginModal(false)
@@ -126,6 +126,14 @@ export default function LoginModal() {
       .then((response) => response.json())
       .then((data) => {
         console.log('Login :: ', data)
+        if (data?.success) {
+          setUserData({
+            username: data?.data?.username,
+            active: data?.data?.active,
+            dSMIAmount: data?.data?.dsmi_amount,
+          })
+          openLoginModal(false)
+        }
       })
       .catch((error) => {
         console.error('Login Error :: ', error)
@@ -150,7 +158,14 @@ export default function LoginModal() {
     })
       .then((response) => response.json())
       .then((data) => {
-        console.log('Login :: ', data)
+        if (data?.success) {
+          setUserData({
+            username: data?.data?.username,
+            active: data?.data?.active,
+            dSMIAmount: data?.data?.dsmi_amount,
+          })
+          openLoginModal(false)
+        }
       })
       .catch((error) => {
         console.error('Login Error :: ', error)

@@ -151,6 +151,7 @@ export const ContainerColumn = styled.div<{
   width?: string
   height?: string
   gap?: string
+  minHeight?: string
 }>`
   display: flex;
   flex-direction: column;
@@ -166,6 +167,7 @@ export const ContainerColumn = styled.div<{
   height: ${({ height }) => (height ? height : 'auto')};
   gap: ${({ gap }) => (gap ? gap : 'auto')};
   transition: height 0.5s ease-in-out;
+  min-height: ${({ minHeight }) => (minHeight ? minHeight : 'auto')};
 `
 
 export const ToastWrapper = styled(ToastContainer).attrs({
@@ -529,4 +531,43 @@ export const CustomInput = styled.input<{
   font-family: ${({ fontFamily }) => (fontFamily ? fontFamily : 'Rubik')};
   color: ${({ color }) => (color ? color : 'var(--primary-text)')};
   outline: none;
+`
+export const TextLabel = styled.span<{
+  color?: string
+  width?: string
+}>`
+  color: ${({ color }) => (color ? color : 'var(--primary-text)')};
+  font-size: 14px;
+  line-height: 1.6;
+  text-align: center;
+  width: ${({ width }) => (width ? width : '50px')};
+`
+
+export const SelectWrapper = styled.select<{ width?: string; height?: string }>`
+  width: ${({ width }) => (width ? width : '100%')};
+  height: ${({ height }) => (height ? height : '42px')};
+  border-radius: 4px;
+  outline: none;
+  border: 1px solid var(--primary-opacity);
+  padding: 12px;
+  background-color: transparent;
+  color: var(--primary-text);
+  option {
+    color: black;
+    background: white;
+    display: flex;
+    white-space: pre;
+    min-height: 40px;
+    padding: 0px 2px 1px;
+  }
+`
+
+export const OptionWrapper = styled.option<{ width?: string; height?: string }>`
+  width: ${({ width }) => (width ? width : '100%')};
+  height: ${({ height }) => (height ? height : '38px')};
+  border: 1px solid var(--primary-opacity);
+  padding: 2px 4px;
+  padding: 12px;
+  background-color: transparent;
+  color: var(--primary);
 `

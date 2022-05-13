@@ -16,6 +16,7 @@ const Menu: React.FC = () => {
     <MenuContainer justifyContent={'flex-start'} width={'fit-content'}>
       <MenuItem to="/leaderboards">Leaderboards</MenuItem>
       <MenuItem to="/transaction">Transaction</MenuItem>
+      <MenuItem to="/profile">Profile</MenuItem>
     </MenuContainer>
   )
 }
