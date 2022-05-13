@@ -12,7 +12,7 @@ import {
 import { isMobile } from 'react-device-detect'
 import ARROW_RIGHT_ROUNDED from '../../assets/images/arrow-right-rounded.svg'
 import BORDER_EFFECT_IMG from '../../assets/images/text-border-bottom-effect.svg'
-import BANNER_IMG from '../../assets/images/banner2.png'
+import BANNER_IMG from '../../assets/images/banner3.png'
 import MAIN_BANNER_IMG from '../../assets/images/banner.png'
 
 const Banner: React.FC<{ mainTitle?: string; subTitle?: string; summary?: string; isClix?: boolean }> = ({

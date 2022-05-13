@@ -134,7 +134,7 @@ const LeaderBoards: React.FC = () => {
   const [selectAllChecked, setSelectAllChecked] = useState<boolean>(false)
 
   useEffect(() => {
-    fetch('https://europe-west3-smi-play.cloudfunctions.net/get-leaderboards-t1')
+    fetch(`${process.env.REACT_APP_API_BASEURL}/get-leaderboards-t1`)
       .then((response) => response.json())
       .then((data) => {
         console.log('data :: ', data)

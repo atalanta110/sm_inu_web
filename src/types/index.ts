@@ -19,3 +19,10 @@ export type TFlexAlignItems =
   | 'end'
   | 'self-start'
   | 'self-end'
+
+export type TSelectedTab = 'account' | 'code'
+export type UserInfoType = {
+  username: string;
+  active: boolean;
+  dSMIAmount: number;
+}
