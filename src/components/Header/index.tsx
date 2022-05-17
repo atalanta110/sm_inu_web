@@ -25,6 +25,11 @@ const Header: React.FC = () => {
 
   const { openLoginModal, logout } = bindActionCreators(actionCreators, dispatch)
 
+  const mainLogout = () => {
+    logout()
+    window.location.href = '/'
+  }
+
   return (
     <HeaderContainer>
       <ContainerRow width={'fit-content'} justifyContent={'flex-start'}>
@@ -39,7 +44,7 @@ const Header: React.FC = () => {
             padding={'24px 24px'}
             backgroundColor={'var(--secondary)'}
             margin={'20px 0'}
-            onClick={() => logout()}
+            onClick={() => mainLogout()}
           >
             Logout
           </LoginButton>
