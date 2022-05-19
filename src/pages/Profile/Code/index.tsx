@@ -41,7 +41,7 @@ const Code: React.FC = () => {
         username: globalState?.user_info?.username,
       })
     }
-  }, [globalState])
+  }, [globalState, buyCode])
 
   const purchaseCode = () => {
     if (buyCode.username === '') {
