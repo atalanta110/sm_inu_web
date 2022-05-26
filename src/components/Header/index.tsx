@@ -9,6 +9,7 @@ import { bindActionCreators } from 'redux'
 import { RootState } from '../../state/reducers'
 import { actionCreators } from '../../state'
 import LoginModal from '../LoginModal'
+import WalletConnector from '../WalletConnection'
 
 const HeaderContainer = styled(ContainerRow)`
   padding: 0.5rem 1rem;
@@ -36,6 +37,7 @@ const Header: React.FC = () => {
         <Logo />
         <Menu />
       </ContainerRow>
+      <WalletConnector />
       <ContainerRow width={'fit-content'} justifyContent={'flex-end'}>
         {globalState?.user_info?.username ? (
           <LoginButton
