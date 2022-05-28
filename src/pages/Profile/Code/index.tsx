@@ -34,15 +34,6 @@ const Code: React.FC = () => {
 
   const { setUserData } = bindActionCreators(actionCreators, dispatch)
 
-  useEffect(() => {
-    if (globalState?.user_info.username) {
-      setBuyCode({
-        ...buyCode,
-        username: globalState?.user_info?.username,
-      })
-    }
-  }, [globalState, buyCode])
-
   const purchaseCode = () => {
     if (buyCode.username === '') {
       toast.error('Please login first!', { toastId: 'Not Authorised' })

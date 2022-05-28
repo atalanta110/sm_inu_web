@@ -27,7 +27,7 @@ const Account: React.FC = () => {
             />
           </ContainerRow>
         </ContainerColumn>
-        <ContainerColumn>
+        {/* <ContainerColumn>
           <ContainerRow alignItems={'center'} margin={'12px 0 0'} justifyContent={'flex-start'}>
             <TextLabel width={'10%'}>{'Active Status'}</TextLabel>
             <InputWrapper
@@ -37,7 +37,7 @@ const Account: React.FC = () => {
               width={'30%'}
             />
           </ContainerRow>
-        </ContainerColumn>
+        </ContainerColumn> */}
         <ContainerColumn>
           <ContainerRow alignItems={'center'} margin={'12px 0 0'} justifyContent={'flex-start'}>
             <TextLabel width={'10%'}>{'dSMI Amount'}</TextLabel>

@@ -5,6 +5,7 @@ import Banner from '../../components/Banners'
 import { TSelectedTab } from '../../types'
 import Account from './Account'
 import Code from './Code'
+import DSMI from './DSMI'
 
 const Profile: React.FC = () => {
   const [selectedTab, setSelectedTab] = useState<TSelectedTab>('account')
@@ -38,6 +39,7 @@ const Profile: React.FC = () => {
         <ContainerRow alignItems={'stretch'}>
           {selectedTab === 'account' && <Account />}
           {selectedTab === 'code' && <Code />}
+          {selectedTab === 'dsmi' && <DSMI />}
         </ContainerRow>
       </ComponentWrapper>
     </PageWrapper>

@@ -436,12 +436,12 @@ export const AvatarContainer = styled.img<{ width?: string }>`
   cursor: pointer;
 `
 
-export const InputWrapper = styled.input<{ width?: string; height?: string }>`
+export const InputWrapper = styled.input<{ width?: string; height?: string; error?: boolean }>`
   width: ${({ width }) => (width ? width : '100%')};
   height: ${({ height }) => (height ? height : '42px')};
   border-radius: 4px;
   outline: none;
-  border: 1px solid var(--primary-opacity);
+  border: ${({ error }) => (error ? '1px solid var(--secondary-opacity)' : '1px solid var(--primary-opacity)')};
   padding: 12px;
   background-color: transparent;
   color: var(--primary-text);
