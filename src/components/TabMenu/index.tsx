@@ -36,6 +36,12 @@ const TabMenu: React.FC<ITabMenu> = ({ handleTabItem, selectedTab }) => {
       >
         <TextCustom color={'var(--primary-text)'}>{'Code'}</TextCustom>
       </TabMenuItem>
+      <TabMenuItem
+        backgroundColor={selectedTab === 'dsmi' ? 'var(--secondary)' : 'transparent'}
+        onClick={() => handleTabItem('dsmi')}
+      >
+        <TextCustom color={'var(--primary-text)'}>{'dSMI'}</TextCustom>
+      </TabMenuItem>
     </TabMenuContainer>
   )
 }

@@ -22,7 +22,11 @@ export const NETWORK_URLS: {
   // [SupportedChainId.MATIC_TESTNET]: `https://speedy-nodes-nyc.moralis.io/9640ff4c41285b3f8833ee7d/polygon/mumbai`,
 }
 
-const SUPPORTED_CHAIN_IDS: SupportedChainId[] = [SupportedChainId.ETHEREUM, SupportedChainId.MATIC, SupportedChainId.MATIC_TESTNET]
+const SUPPORTED_CHAIN_IDS: SupportedChainId[] = [
+  SupportedChainId.ETHEREUM,
+  SupportedChainId.MATIC,
+  SupportedChainId.MATIC_TESTNET,
+]
 
 export const network = new NetworkConnector({
   urls: NETWORK_URLS,

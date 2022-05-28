@@ -20,7 +20,7 @@ export type TFlexAlignItems =
   | 'self-start'
   | 'self-end'
 
-export type TSelectedTab = 'account' | 'code'
+export type TSelectedTab = 'account' | 'code' | 'dsmi'
 export type UserInfoType = {
   username: string;
   active: boolean;
