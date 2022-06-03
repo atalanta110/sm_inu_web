@@ -26,3 +26,4 @@ export type UserInfoType = {
   active: boolean;
   dSMIAmount: number;
 }
+export type LeaderBoardSelectedTab = 'common' | 'uncommon' | 'unrestricted'

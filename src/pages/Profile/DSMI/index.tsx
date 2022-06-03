@@ -75,6 +75,14 @@ const DSMI: React.FC = () => {
   }, [])
 
   const exchange = async () => {
+    if (sendAmount === 0) {
+      toast.error('Please provide the SMI amount', { toastId: 'Not provided smi amount' })
+      return
+    } else if (sendAmount > smiAmount) {
+      toast.error('You have no enough SMI', { toastId: 'Unsufficient amount of smi' })
+      return
+    }
+
     const web3 = await Web3Helper.getInstance(SupportedChainId.ETHEREUM)
     const contract = Web3Helper.getSMIContract(web3, process.env.REACT_APP_SMI_ADDRESS)
     const gasPrice = await web3.eth.getGasPrice()
@@ -105,52 +113,60 @@ const DSMI: React.FC = () => {
       }
 
       const raw = res.rawTransaction
-      web3.eth.sendSignedTransaction(raw || '').on('receipt', (receipt) => {
-        console.log('receipt :: ', receipt)
+      web3.eth
+        .sendSignedTransaction(raw || '')
+        .on('receipt', (receipt) => {
+          console.log('receipt :: ', receipt)
 
-        if (receipt && receipt.status && !error) {
-          const data = new FormData()
-          if (sendAmount === 0) return
+          if (receipt && receipt.status && !error) {
+            const data = new FormData()
 
-          let txFee = receipt.gasUsed * receipt.effectiveGasPrice * 10 ** -18 * etherPrice
-          let dsmiAmount = 0
-          if (txFee >= 25) {
-            dsmiAmount = Math.round(sendAmount * smiPrice * 1.02 + txFee)
-          } else {
-            dsmiAmount = Math.round(sendAmount * smiPrice * 1.02)
-          }
+            let txFee = receipt.gasUsed * receipt.effectiveGasPrice * 10 ** -18 * etherPrice
+            let dsmiAmount = 0
+            if (txFee >= 25) {
+              dsmiAmount = Math.round(sendAmount * smiPrice * 1.02 + txFee)
+            } else {
+              dsmiAmount = Math.round(sendAmount * smiPrice * 1.02)
+            }
 
-          setDsmiAmount(dsmiAmount)
+            setDsmiAmount(dsmiAmount)
 
-          data.append('username', globalState.user_info.username || '')
-          data.append('dsmi', String(dsmiAmount))
+            data.append('username', globalState.user_info.username || '')
+            data.append('dsmi', String(dsmiAmount))
 
-          fetch(`${process.env.REACT_APP_API_BASEURL}/give-dsmi`, {
-            method: 'POST',
-            headers: {
-              key: `${process.env.REACT_APP_API_KEY}`,
-            },
-            body: data,
-          })
-            .then((response) => response.json())
-            .then((data) => {
-              console.log('got dSMI :: ', data)
-              if (data?.success) {
-                setUserData({
-                  username: data?.data?.username,
-                  active: globalState.user_info.active,
-                  dSMIAmount: data?.data?.dsmi_new,
-                })
-                setMessage(data?.message)
+            fetch(`${process.env.REACT_APP_API_BASEURL}/give-dsmi`, {
+              method: 'POST',
+              headers: {
+                key: `${process.env.REACT_APP_API_KEY}`,
+              },
+              body: data,
+            })
+              .then((response) => response.json())
+              .then((data) => {
+                console.log('got dSMI :: ', data)
+                if (data?.success) {
+                  setUserData({
+                    username: data?.data?.username,
+                    active: globalState.user_info.active,
+                    dSMIAmount: data?.data?.dsmi_new,
+                  })
+                  setMessage(data?.message)
+                  setLoading(false)
+                }
+              })
+              .catch((error) => {
                 setLoading(false)
-              }
-            })
-            .catch((error) => {
-              setLoading(false)
-              console.error(error)
-            })
-        }
-      })
+                console.error(error)
+              })
+          } else {
+            setLoading(false)
+          }
+        })
+        .on('error', (error) => {
+          setLoading(false)
+          toast.error(error.message, { toastId: 'Transaction failed' })
+          console.error('error :: ', error)
+        })
     })
   }
 
@@ -189,10 +205,10 @@ const DSMI: React.FC = () => {
         </ContainerColumn>
         <ContainerColumn>
           <ContainerRow alignItems={'center'} margin={'12px 0 0'} justifyContent={'flex-start'}>
-            <TextLabel width={'30%'}>{'Amount'}</TextLabel>
+            <TextLabel width={'30%'}>{'SMI Amount'}</TextLabel>
             <ContainerColumn width={'50%'}>
               <InputWrapper
-                placeholder="Amount"
+                placeholder="SMI Amount"
                 width={'100%'}
                 type={'number'}
                 min={1}
