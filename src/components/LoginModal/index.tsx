@@ -125,12 +125,17 @@ export default function LoginModal() {
     })
       .then((response) => response.json())
       .then((data) => {
-        console.log('Login :: ', data)
+        console.log('Login data :: ', data)
         if (data?.success) {
           setUserData({
             username: data?.data?.username,
             active: data?.data?.active,
             dSMIAmount: data?.data?.dsmi_amount,
+            pastCodes: {
+              codesRew1: data?.data?.past_codes?.codes_rew1?.trim().split(' '),
+              codesRew2: data?.data?.past_codes?.codes_rew2?.trim().split(' '),
+              codesRew3: data?.data?.past_codes?.codes_rew3?.trim().split(' '),
+            },
           })
           openLoginModal(false)
         }
@@ -163,6 +168,11 @@ export default function LoginModal() {
             username: data?.data?.username,
             active: data?.data?.active,
             dSMIAmount: data?.data?.dsmi_amount,
+            pastCodes: {
+              codesRew1: data?.data?.past_codes?.codes_rew1?.trim().split(' '),
+              codesRew2: data?.data?.past_codes?.codes_rew2?.trim().split(' '),
+              codesRew3: data?.data?.past_codes?.codes_rew3?.trim().split(' '),
+            },
           })
           openLoginModal(false)
         }

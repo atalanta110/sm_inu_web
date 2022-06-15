@@ -70,104 +70,111 @@ const DSMI: React.FC = () => {
         setSmiAmount(amount / 10 ** parseInt(process.env.REACT_APP_SMI_DECIMAL))
       }
     }
-    getAmount()
+    if (account) {
+      getAmount()
+    }
     // eslint-disable-next-line
-  }, [])
+  }, [account])
 
   const exchange = async () => {
-    if (sendAmount === 0) {
-      toast.error('Please provide the SMI amount', { toastId: 'Not provided smi amount' })
-      return
-    } else if (sendAmount > smiAmount) {
-      toast.error('You have no enough SMI', { toastId: 'Unsufficient amount of smi' })
-      return
-    }
-
-    const web3 = await Web3Helper.getInstance(SupportedChainId.ETHEREUM)
-    const contract = Web3Helper.getSMIContract(web3, process.env.REACT_APP_SMI_ADDRESS)
-    const gasPrice = await web3.eth.getGasPrice()
-    const count = await web3.eth.getTransactionCount(account || '')
-
-    setLoading(true)
-
-    const txObject = {
-      from: account || '',
-      nonce: Number('0x' + count.toString(16)),
-      to: process.env.REACT_APP_SMI_ADDRESS || '',
-      gas: 100000,
-      value: '0x0',
-      data: contract.methods
-        .transfer(
-          process.env.REACT_APP_MV_STORE_ADDRESS,
-          web3.utils.toHex(web3.utils.toWei((sendAmount / 10).toString(), 'gwei'))
-        )
-        .encodeABI(),
-      gasPrice: gasPrice,
-    }
-    console.log(txObject)
-    web3.eth.accounts.signTransaction(txObject, process.env.REACT_APP_PRIVATE_KEY || '', (err, res) => {
-      if (err) {
-        console.log('err 1', err)
-      } else {
-        console.log('res 1', res)
+    if (account) {
+      if (sendAmount === 0) {
+        toast.error('Please provide the SMI amount', { toastId: 'Not provided smi amount' })
+        return
+      } else if (sendAmount > smiAmount) {
+        toast.error('You have no enough SMI', { toastId: 'Unsufficient amount of smi' })
+        return
       }
 
-      const raw = res.rawTransaction
-      web3.eth
-        .sendSignedTransaction(raw || '')
-        .on('receipt', (receipt) => {
-          console.log('receipt :: ', receipt)
+      const web3 = await Web3Helper.getInstance(SupportedChainId.ETHEREUM)
+      const contract = Web3Helper.getSMIContract(web3, process.env.REACT_APP_SMI_ADDRESS)
+      const gasPrice = await web3.eth.getGasPrice()
+      const count = await web3.eth.getTransactionCount(account || '')
 
-          if (receipt && receipt.status && !error) {
-            const data = new FormData()
+      setLoading(true)
 
-            let txFee = receipt.gasUsed * receipt.effectiveGasPrice * 10 ** -18 * etherPrice
-            let dsmiAmount = 0
-            if (txFee >= 25) {
-              dsmiAmount = Math.round(sendAmount * smiPrice * 1.02 + txFee)
-            } else {
-              dsmiAmount = Math.round(sendAmount * smiPrice * 1.02)
-            }
+      const txObject = {
+        from: account || '',
+        nonce: Number('0x' + count.toString(16)),
+        to: process.env.REACT_APP_SMI_ADDRESS || '',
+        gas: 100000,
+        value: '0x0',
+        data: contract.methods
+          .transfer(
+            process.env.REACT_APP_MV_STORE_ADDRESS,
+            web3.utils.toHex(web3.utils.toWei((sendAmount / 10).toString(), 'gwei'))
+          )
+          .encodeABI(),
+        gasPrice: gasPrice,
+      }
+      console.log(txObject)
+      web3.eth.accounts.signTransaction(txObject, process.env.REACT_APP_PRIVATE_KEY || '', (err, res) => {
+        if (err) {
+          console.log('err 1', err)
+        } else {
+          console.log('res 1', res)
+        }
 
-            setDsmiAmount(dsmiAmount)
+        const raw = res.rawTransaction
+        web3.eth
+          .sendSignedTransaction(raw || '')
+          .on('receipt', (receipt) => {
+            console.log('receipt :: ', receipt)
 
-            data.append('username', globalState.user_info.username || '')
-            data.append('dsmi', String(dsmiAmount))
+            if (receipt && receipt.status && !error) {
+              const data = new FormData()
 
-            fetch(`${process.env.REACT_APP_API_BASEURL}/give-dsmi`, {
-              method: 'POST',
-              headers: {
-                key: `${process.env.REACT_APP_API_KEY}`,
-              },
-              body: data,
-            })
-              .then((response) => response.json())
-              .then((data) => {
-                console.log('got dSMI :: ', data)
-                if (data?.success) {
-                  setUserData({
-                    username: data?.data?.username,
-                    active: globalState.user_info.active,
-                    dSMIAmount: data?.data?.dsmi_new,
-                  })
-                  setMessage(data?.message)
+              let txFee = receipt.gasUsed * receipt.effectiveGasPrice * 10 ** -18 * etherPrice
+              let dsmiAmount = 0
+              if (txFee >= 25) {
+                dsmiAmount = Math.round(sendAmount * smiPrice * 1.02 + txFee)
+              } else {
+                dsmiAmount = Math.round(sendAmount * smiPrice * 1.02)
+              }
+
+              setDsmiAmount(dsmiAmount)
+
+              data.append('username', globalState.user_info.username || '')
+              data.append('dsmi', String(dsmiAmount))
+
+              fetch(`${process.env.REACT_APP_API_BASEURL}/give-dsmi`, {
+                method: 'POST',
+                headers: {
+                  key: `${process.env.REACT_APP_API_KEY}`,
+                },
+                body: data,
+              })
+                .then((response) => response.json())
+                .then((data) => {
+                  console.log('got dSMI :: ', data)
+                  if (data?.success) {
+                    setUserData({
+                      username: data?.data?.username,
+                      active: globalState?.user_info?.active,
+                      dSMIAmount: data?.data?.dsmi_new,
+                      pastCodes: globalState?.user_info?.pastCodes,
+                    })
+                    setMessage(data?.message)
+                    setLoading(false)
+                  }
+                })
+                .catch((error) => {
                   setLoading(false)
-                }
-              })
-              .catch((error) => {
-                setLoading(false)
-                console.error(error)
-              })
-          } else {
+                  console.error(error)
+                })
+            } else {
+              setLoading(false)
+            }
+          })
+          .on('error', (error) => {
             setLoading(false)
-          }
-        })
-        .on('error', (error) => {
-          setLoading(false)
-          toast.error(error.message, { toastId: 'Transaction failed' })
-          console.error('error :: ', error)
-        })
-    })
+            toast.error(error.message, { toastId: 'Transaction failed' })
+            console.error('error :: ', error)
+          })
+      })
+    } else {
+      toast.info('You need to connect to your wallet')
+    }
   }
 
   const changeAmount = (amount: number) => {

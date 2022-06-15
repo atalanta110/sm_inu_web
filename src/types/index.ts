@@ -25,5 +25,6 @@ export type UserInfoType = {
   username: string;
   active: boolean;
   dSMIAmount: number;
+  pastCodes: any;
 }
 export type LeaderBoardSelectedTab = 'common' | 'uncommon' | 'unrestricted'
