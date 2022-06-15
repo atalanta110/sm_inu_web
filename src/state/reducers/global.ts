@@ -13,6 +13,11 @@ const initialState: InitialSate = {
     username: '',
     active: false,
     dSMIAmount: 0,
+    pastCodes: {
+      codesRew1: [],
+      codesRew2: [],
+      codesRew3: [],
+    },
   },
 }
 
@@ -26,11 +31,7 @@ const reducer = (state: InitialSate = initialState, action: Action) => {
     case ActionType.LOGOUT:
       return {
         ...state,
-        user_info: {
-          username: '',
-          active: false,
-          dSMIAmount: 0,
-        },
+        user_info: initialState.user_info,
       }
     case ActionType.SET_USER_INFO:
       return {
