@@ -30,7 +30,7 @@ const PastCodes: React.FC<{ codes?: string[] }> = ({ codes = [] }) => {
         </BoxCardWithoutBorder>
         <BoxCardWithoutBorder boxWidth={'90%'} justifyContent={'flex-start'} padding={'2px'} margin={'0'}>
           <TextCustom color={'var(--primary-text)'} fontSize={'16px'} fontWeight={300}>
-            Username
+            Code
           </TextCustom>
         </BoxCardWithoutBorder>
       </ContainerRow>
