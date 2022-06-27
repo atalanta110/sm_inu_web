@@ -5,6 +5,7 @@ import {
   TextCustom,
   BigBoxWithoutShadow,
   ImageContainer,
+  ResponsiveBigBoxWithoutShadow,
 } from '../../styles/globalStyles'
 import { isMobile } from 'react-device-detect'
 import BANNER_SECOND from '../../assets/images/game/Raid_Image_3.jpg'
@@ -12,9 +13,9 @@ import BANNER_SECOND from '../../assets/images/game/Raid_Image_3.jpg'
 export const RoleOfSMI: React.FC = () => {
   return (
     <ComponentWrapper margin={'50px 0 0'} padding={'24px'}>
-      <BigBoxWithoutShadow border={'20px solid var(--light-navy)'} backgroundColor={'var(--light-navy-blue)'}>
+      <ResponsiveBigBoxWithoutShadow border={'20px solid var(--light-navy)'} backgroundColor={'var(--light-navy-blue)'}>
         <BoxCardWithoutBorder boxWidth={'40%'}>
-          <ImageContainer src={BANNER_SECOND} width={'100%'} margin={'-5% 0 0 0'} borderRadius={'0'} />
+          <ImageContainer src={BANNER_SECOND} width={'100%'} borderRadius={'0'} />
         </BoxCardWithoutBorder>
         <BoxCardWithoutBorder flexDirection={'column'} boxWidth={'50%'} alignItems={'flex-start'}>
           <TextCustom
@@ -30,7 +31,7 @@ export const RoleOfSMI: React.FC = () => {
           </TextCustom>
           <TextCustom
             color={'var(--primary-text)'}
-            fontSize={isMobile ? '1.2rem' : '1.3rem'}
+            fontSize={isMobile ? '0.8rem' : '1.3rem'}
             fontWeight={100}
             fontFamily={'Rubik'}
             lineHeight={1.2}
@@ -44,7 +45,7 @@ export const RoleOfSMI: React.FC = () => {
             a special Fish/Dolphin/Whale status for additional benefits, free item rewards etc.
           </TextCustom>
         </BoxCardWithoutBorder>
-      </BigBoxWithoutShadow>
+      </ResponsiveBigBoxWithoutShadow>
     </ComponentWrapper>
   )
 }

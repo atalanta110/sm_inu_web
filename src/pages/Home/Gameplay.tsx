@@ -9,6 +9,8 @@ import {
   device,
   SubText,
   ImageContainer,
+  ResponsiveImageContainer,
+  BoxCardWithoutBorder,
 } from '../../styles/globalStyles'
 import BANNER_THIRD from '../../assets/images/game/Fan_Art_-_Expedition.jpg'
 import { TimelineContainer } from '../../components/TimelineContainer'
@@ -65,13 +67,15 @@ export const Gameplay: React.FC = () => {
       </ResponsiveWrapper>
       <SpacerLarge />
       <ResponsiveWrapper>
-        <ImageContainer
-          src={BANNER_THIRD}
-          width={'35%'}
-          objectFit={'cover'}
-          margin={'0 20px 0 20px'}
-          borderRadius={'0'}
-        />
+        <BoxCardWithoutBorder>
+          <ResponsiveImageContainer
+            src={BANNER_THIRD}
+            width={'35%'}
+            objectFit={'cover'}
+            margin={'0 20px 0 20px'}
+            borderRadius={'0'}
+          />
+        </BoxCardWithoutBorder>
         <ContainerColumn>
           {cardItems.map((item, index) => {
             return (

@@ -7,6 +7,8 @@ import {
   ImageContainer,
   SubText,
   ImageIconContainer,
+  ResponsiveContainer,
+  ResponsiveProductBoxCard,
 } from '../../styles/globalStyles'
 import { isMobile } from 'react-device-detect'
 import DOLPHINE from '../../assets/images/feature/Website_PNG_-_Moonshot_voyage_Holder_Status_-_Dolphine.png'
@@ -22,7 +24,7 @@ export const ProductExplainItem: React.FC<{
   note: string
 }> = ({ src, description, highlightText, hold, reward, note }) => {
   return (
-    <BoxCard
+    <ResponsiveProductBoxCard
       boxWidth={'30%'}
       boxHeight={'498px'}
       border={'10px solid var(--light-navy)'}
@@ -120,14 +122,14 @@ export const ProductExplainItem: React.FC<{
           {note}
         </TextCustom>
       </div>
-    </BoxCard>
+    </ResponsiveProductBoxCard>
   )
 }
 
 export const ProductExplain: React.FC = () => {
   return (
     <ComponentWrapper margin={'50px 0 0'} padding={'24px'}>
-      <ContainerRow>
+      <ResponsiveContainer>
         <ProductExplainItem
           src={FISH}
           description={['Moonshot voyage', 'holder status']}
@@ -152,7 +154,7 @@ export const ProductExplain: React.FC = () => {
           reward={'50 Moonscrap & Raid Token'}
           note={'Mint Rare NFTs & Higher'}
         />
-      </ContainerRow>
+      </ResponsiveContainer>
     </ComponentWrapper>
   )
 }

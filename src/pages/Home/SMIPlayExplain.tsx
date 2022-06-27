@@ -8,6 +8,7 @@ import {
   TextCustom,
   SubText,
   ImageContainer,
+  ResponsiveBoxCard,
 } from '../../styles/globalStyles'
 import SMI_EXPLAIN_ITEM_1 from '../../assets/images/game/Moonshot_Voyage_Image_1.png'
 import SMI_EXPLAIN_ITEM_2 from '../../assets/images/game/Moonshot_Voyage_Image_1_-_Copy.png'
@@ -59,7 +60,7 @@ export const SMIExplainItem: React.FC<{ url: string; description: string; subDes
   subDescription,
 }) => {
   return (
-    <BoxCard
+    <ResponsiveBoxCard
       boxWidth={'47%'}
       boxHeight={'150px'}
       border={'5px solid var(--light-navy-blue)'}
@@ -83,7 +84,7 @@ export const SMIExplainItem: React.FC<{ url: string; description: string; subDes
           {subDescription}
         </TextCustom>
       </ContainerColumn>
-    </BoxCard>
+    </ResponsiveBoxCard>
   )
 }
 

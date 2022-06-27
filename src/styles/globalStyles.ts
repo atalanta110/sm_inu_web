@@ -184,6 +184,14 @@ export const ResponsiveContainer = styled(ContainerColumn)`
     gap: 12px;
   }
 `
+
+export const ResponsiveContainerRow = styled(ContainerColumn)`
+  @media ${device.laptop} {
+    flex-direction: row;
+    gap: 12px;
+  }
+`
+
 export const BigBox = styled.div<{
   flexDirection?: TFlexDirections
   justifyContent?: TFlexJustifyContents
@@ -230,6 +238,13 @@ export const BigBoxWithoutShadow = styled.div<{
   border: ${({ border }) => (border ? border : '1px solid var(--secondary)')};
   background-color: ${({ backgroundColor }) => (backgroundColor ? backgroundColor : 'none')};
 `
+
+export const ResponsiveBigBoxWithoutShadow = styled(BigBoxWithoutShadow)`
+  @media screen and (max-width: ${size.laptop}) {
+    flex-direction: column;
+  }
+`
+
 export const BoxCard = styled.div<{
   flexDirection?: TFlexDirections
   justifyContent?: TFlexJustifyContents
@@ -269,6 +284,19 @@ export const BoxCard = styled.div<{
   }
 `
 
+export const ResponsiveBoxCard = styled(BoxCard)`
+  @media screen and (max-width: ${size.laptop}) {
+    width: 100%;
+  }
+`
+
+export const ResponsiveProductBoxCard = styled(BoxCard)`
+  @media screen and (max-width: ${size.laptop}) {
+    width: 100%;
+    margin-top: 30%;
+  }
+`
+
 export const BoxCardWithoutBorder = styled.div<{
   flexDirection?: TFlexDirections
   justifyContent?: TFlexJustifyContents
@@ -287,6 +315,10 @@ export const BoxCardWithoutBorder = styled.div<{
   padding: ${({ padding }) => (padding ? padding : '10px')};
   margin: ${({ margin }) => (margin ? margin : '12px')};
   border: none;
+
+  @media screen and (max-width: ${size.laptop}) {
+    width: 100%;
+  }
 `
 
 export const ImageIconContainer = styled.div<{
@@ -465,6 +497,13 @@ export const ImageContainer = styled.img<{
   cursor: pointer;
   position: ${({ position }) => (position ? position : 'unset')};
 `
+
+export const ResponsiveImageContainer = styled(ImageContainer)`
+  @media screen and (max-width: ${size.laptop}) {
+    width: 100%;
+  }
+`
+
 export const ColorDot = styled.span<{
   width?: string
   height?: string
