@@ -5,6 +5,8 @@ import {
   TextCustom,
   ContainerRow,
   ImageContainer,
+  ResponsiveContainerRow,
+  ResponsiveImageContainer,
 } from '../../styles/globalStyles'
 import { isMobile } from 'react-device-detect'
 import BANNER_MAIN from '../../assets/images/game/Raid_Image_2.jpg'
@@ -12,7 +14,7 @@ import BANNER_MAIN from '../../assets/images/game/Raid_Image_2.jpg'
 export const IntroducingBox: React.FC = () => {
   return (
     <ComponentWrapper margin={'50px 0 0'} padding={'24px'}>
-      <ContainerRow>
+      <ResponsiveContainerRow>
         <BoxCardWithoutBorder flexDirection={'column'} boxWidth={'60%'} alignItems={'flex-start'}>
           <TextCustom
             color={'var(--primary-text)'}
@@ -41,9 +43,9 @@ export const IntroducingBox: React.FC = () => {
           </TextCustom>
         </BoxCardWithoutBorder>
         <BoxCardWithoutBorder>
-          <ImageContainer src={BANNER_MAIN} width={'70%'} style={{ marginTop: '-5%', borderRadius: 0 }} />
+          <ResponsiveImageContainer src={BANNER_MAIN} width={'60%'} style={{ borderRadius: 0 }} />
         </BoxCardWithoutBorder>
-      </ContainerRow>
+      </ResponsiveContainerRow>
     </ComponentWrapper>
   )
 }

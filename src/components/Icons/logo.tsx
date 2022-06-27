@@ -9,7 +9,7 @@ const LogoContainer = styled.img`
 
 const Logo: React.FC = () => {
   return (
-    <NavLink to="/" style={{ width: '10%' }}>
+    <NavLink to="/" style={{ width: '100px' }}>
       <LogoContainer src={LOGO_IMG} />
     </NavLink>
   )
