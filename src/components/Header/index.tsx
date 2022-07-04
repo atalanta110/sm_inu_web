@@ -37,31 +37,33 @@ const Header: React.FC = () => {
         <Logo />
         <Menu />
       </ContainerRow>
-      <WalletConnector />
-      <ContainerRow width={'fit-content'} justifyContent={'flex-end'}>
-        {globalState?.user_info?.username ? (
-          <LoginButton
-            width={'fit-content'}
-            borderRadius={'24px'}
-            padding={'24px 24px'}
-            backgroundColor={'var(--secondary)'}
-            margin={'20px 0'}
-            onClick={() => mainLogout()}
-          >
-            Logout
-          </LoginButton>
-        ) : (
-          <LoginButton
-            width={'fit-content'}
-            borderRadius={'24px'}
-            padding={'24px 24px'}
-            backgroundColor={'var(--secondary)'}
-            margin={'20px 0'}
-            onClick={() => openLoginModal(globalState.login_modal ? false : true)}
-          >
-            Login
-          </LoginButton>
-        )}
+      <ContainerRow justifyContent={'flex-end'}>
+        <WalletConnector />
+        <ContainerRow width={'fit-content'} justifyContent={'flex-end'}>
+          {globalState?.user_info?.username ? (
+            <LoginButton
+              width={'fit-content'}
+              borderRadius={'24px'}
+              padding={'24px 24px'}
+              backgroundColor={'var(--secondary)'}
+              margin={'20px 0'}
+              onClick={() => mainLogout()}
+            >
+              Logout
+            </LoginButton>
+          ) : (
+            <LoginButton
+              width={'fit-content'}
+              borderRadius={'24px'}
+              padding={'24px 24px'}
+              backgroundColor={'var(--secondary)'}
+              margin={'20px 0'}
+              onClick={() => openLoginModal(globalState.login_modal ? false : true)}
+            >
+              Login
+            </LoginButton>
+          )}
+        </ContainerRow>
       </ContainerRow>
       <LoginModal />
     </HeaderContainer>
