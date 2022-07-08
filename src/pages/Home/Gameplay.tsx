@@ -17,7 +17,7 @@ import SMI_EXPLAIN_ITEM_3 from '../../assets/images/game/Moonshot_Voyage_Image_3
 import SMI_EXPLAIN_ITEM_4 from '../../assets/images/game/Moonshot_Voyage_Image_4.png'
 import SMI_EXPLAIN_ITEM_5 from '../../assets/images/game/Moonshot_Voyage_Image_1_-_Copy.png'
 
-const SMIExplainList = [
+const GamePlayList = [
   {
     id: 1,
     description: 'Expedition',
@@ -55,41 +55,6 @@ const SMIExplainList = [
   },
 ]
 
-export const SMIExplainItem: React.FC<{ url: string; description: string; subDescription: string }> = ({
-  url,
-  description,
-  subDescription,
-}) => {
-  return (
-    <ResponsiveBoxCard
-      boxWidth={'100%'}
-      // boxHeight={'150px'}
-      border={'5px solid var(--light-navy-blue)'}
-      justifyContent={'flex-start'}
-      borderRadius={'5px'}
-      borderHover={'2px solid var(--secondary-opacity)'}
-      backgroundHover={'var(--dark-secondary)'}
-    >
-      <ImageContainer src={url} width={'75px'} borderRadius={'0'} objectFit={'contain'} margin={'0 20px 0 20px'} />
-      <ContainerColumn width={isMobile ? '100%' : '80%'} alignItems={'flex-start'} padding={'20px'}>
-        <TextCustom
-          fontSize={isMobile ? '1rem' : '1.25rem'}
-          fontWeight={600}
-          fontFamily={'RubikBold'}
-          lineHeight={1.1}
-          textAlign={'left'}
-        >
-          {description}
-        </TextCustom>
-        <TextCustom fontSize={isMobile ? '0.6rem' : '1.1rem'} fontWeight={300} lineHeight={1.3} textAlign={'left'}>
-          {/* {subDescription} */}
-          <div dangerouslySetInnerHTML={{ __html: subDescription }}></div>
-        </TextCustom>
-      </ContainerColumn>
-    </ResponsiveBoxCard>
-  )
-}
-
 export const GamePlay: React.FC = () => {
   return (
     <ComponentWrapper padding={'24px'}>
@@ -105,14 +70,8 @@ export const GamePlay: React.FC = () => {
           Game play
         </TextCustom>
         <ResponsiveContainer>
-          {SMIExplainList.map((item) => {
+          {GamePlayList.map((item) => {
             return (
-              // <SMIExplainItem
-              //   key={item.id}
-              //   url={item.imgSrc}
-              //   description={item.description}
-              //   subDescription={item.subDescription}
-              // />
               <ExpanableCard key={item.id} boxWidth={'100%'} title={item.description} content={item.subDescription} />
             )
           })}
