@@ -67,7 +67,7 @@ export const GamePlayExplanation: React.FC = () => {
           textAlign={'center'}
           margin={'5% 0 2% 0'}
         >
-          Game play
+          Gameplay
         </TextCustom>
         <ResponsiveContainer>
           {GamePlayList.map((item) => {

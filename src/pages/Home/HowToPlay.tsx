@@ -5,6 +5,7 @@ import DOT_BLOCK_EFFECT_BLUE from '../../assets/images/dot-block-effect-blue.svg
 import DOT_BLOCK_EFFECT_RED from '../../assets/images/dot-block-effect-red.svg'
 import QUOTATION_MARK from '../../assets/images/quotation-mark.svg'
 import BORDER_EFFECT_IMG from '../../assets/images/text-border-bottom-effect.svg'
+import { MainButton } from '../../components/Buttons/MainButton'
 import {
   AvatarContainer,
   BoxCard,
@@ -81,11 +82,29 @@ export const HowToPlay: React.FC = () => {
                 lineHeight={1.5}
                 textAlign={'left'}
               >
-                1. Download the game launcher here
+                <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'center' }}>
+                  1. Download the game launcher here
+                  <MainButton
+                    backgroundColor={'var(--secondary)'}
+                    borderRadius={'12px'}
+                    margin={'0px 10px'}
+                    onClick={() => {}}
+                  >
+                    Game launcher
+                  </MainButton>
+                </div>
                 <br />
-                <br />
-                2. Download Enjin Wallet
-                <br />
+                <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'center' }}>
+                  2. Download Enjin Wallet
+                  <MainButton
+                    backgroundColor={'var(--secondary)'}
+                    borderRadius={'12px'}
+                    margin={'0px 10px'}
+                    onClick={() => window.open('https://enjin.io/products/wallet', '_blank')}
+                  >
+                    Enjin Wallet
+                  </MainButton>
+                </div>
                 <br />
                 3. Import your DeFi wallet with SMI or create a new one in the Enjin Wallet
                 <br />
