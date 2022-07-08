@@ -15,7 +15,7 @@ import BORDER_EFFECT_IMG from '../../assets/images/text-border-bottom-effect.svg
 import BANNER_IMG from '../../assets/images/banner3.png'
 import MAIN_BANNER_IMG from '../../assets/images/banner.png'
 
-const Banner: React.FC<{ mainTitle?: string; subTitle?: string; summary?: string; isClix?: boolean }> = ({
+const Banner: React.FC<{ mainTitle?: string; subTitle?: string; summary: string; isClix?: boolean }> = ({
   mainTitle,
   subTitle,
   summary,
@@ -57,7 +57,8 @@ const Banner: React.FC<{ mainTitle?: string; subTitle?: string; summary?: string
                 textAlign={'left'}
                 margin={'20px 0'}
               >
-                {summary}
+                {/* {summary} */}
+                <div dangerouslySetInnerHTML={{ __html: summary }}></div>
               </TextCustom>
               <MainButton
                 width={'fit-content'}

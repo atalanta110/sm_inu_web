@@ -2,20 +2,22 @@ import React from 'react'
 import { PageWrapper } from '../../styles/globalStyles'
 import { IntroducingBox } from './IntroducingBox'
 import { Video } from './Video'
-import { RoleOfSMI } from './RoleOfSMI'
+import { PowerOfSMI } from './PowerOfSMI'
 import { ProductExplain } from './ProductExplain'
-import { SMIExplain } from './SMIPlayExplain'
-import { Gameplay } from './Gameplay'
+import { GamePlayExplanation } from './GamePlayExplanation'
+import { RoadMap } from './RoadMap'
+import { HowToPlay } from './HowToPlay'
 
 const Home: React.FC = () => {
   return (
     <PageWrapper>
       <IntroducingBox />
       <Video />
-      <RoleOfSMI />
+      <PowerOfSMI />
       <ProductExplain />
-      <SMIExplain />
-      <Gameplay />
+      <HowToPlay />
+      <GamePlayExplanation />
+      <RoadMap />
     </PageWrapper>
   )
 }

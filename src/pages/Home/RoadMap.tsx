@@ -24,28 +24,24 @@ const ResponsiveWrapper = styled(ContainerColumn)`
 `
 const cardItems = [
   {
-    cardTitle: 'Spaceship',
-    cardSubtitle:
-      'Your spaceship is your hub, where you can prepare your character for an expedition, check your mail, craft items, view your resources, upgrade your weapons and characters etc. There are many different ships available as Token Items which you can customize using furniture items.',
+    cardTitle: 'July 2022',
+    cardSubtitle: 'Moonshot Voyage Season 0 Launch (PC & Mac)',
   },
   {
-    cardTitle: 'Expedition',
-    cardSubtitle:
-      'Expedition is a Tower Defense type game mode, where players defend their base against an endless swarm of enemies and bosses. Players receive Dust from defeating enemies, which they can use to place towers and buy upgrades with. After every boss wave, the difficulty of current expedition rises. The longer a player can last, the more Moonscrap they will receive at the end. Dust, towers, upgrades, score and difficulty will be reset after every expedition, so will be the Expedition level, which is randomly generated.',
+    cardTitle: 'September 2022',
+    cardSubtitle: 'Midseason Update & Ranked Leaderboards start',
   },
   {
-    cardTitle: 'Raids',
-    cardSubtitle:
-      'Raids are longer levels full of enemies, puzzles and a boss fight at the end. Get to the end of the level and defeat the boss to receive a Token Item. Each raid boss has a set list of available item drops which you can view before starting a raid. Players can enter a Raid for free once a day, otherwise a Raid Ticket is needed.',
+    cardTitle: 'Q4 2022',
+    cardSubtitle: 'Moonshot Voyage Mobile Beta Test',
   },
   {
-    cardTitle: 'Combat',
-    cardSubtitle:
-      'Combat takes a huge part of Moonshot Voyage. It consists of shooting enemies using your character and a weapon of choice while dodging enemy attacks. Your starting character and weapon will be weak, so you should pay a lot of attention to upgrading and optimizing your setup. ',
+    cardTitle: 'December 2022',
+    cardSubtitle: 'Moonshot Voyage Season 1 Launch (PC, Mac, Android, iOS)',
   },
 ]
 
-export const Gameplay: React.FC = () => {
+export const RoadMap: React.FC = () => {
   const [selectedCard, setSelectedCard] = useState(1)
   const cardSelect = (index: number) => {
     setSelectedCard(index)
@@ -62,7 +58,7 @@ export const Gameplay: React.FC = () => {
           textAlign={'center'}
           margin={'5% 0 2% 0'}
         >
-          Gameplay
+          Roadmap
         </TextCustom>
       </ResponsiveWrapper>
       <SpacerLarge />

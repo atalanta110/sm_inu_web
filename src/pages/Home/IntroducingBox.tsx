@@ -35,11 +35,13 @@ export const IntroducingBox: React.FC = () => {
             textAlign={'left'}
             style={{ marginTop: '10px' }}
           >
-            Moonshot Voyage is an upcoming launch title on the SMI Play platform. It is a top-down looter shooter game
-            with a play-to-earn system based on SMI Play Token Items. Take a role of a space bounty hunter and traverse
-            an unknown galaxy after being sucked into a black hole while trying to find a legendary spaceship - the
-            Moonshot. It will not be an easy task though... Fight aliens, monsters, ghosts and other deadly creatures
-            along the way to reach the Moonshot and all its secrets.
+            Moonshot Voyage is a top-down shooter using a play-and-earn system based on SMI Play Token Items powered by
+            Enjin. <br />
+            <br />
+            Take a role of a space bounty hunter and traverse an unknown galaxy after being sucked into a black hole
+            while trying to find a legendary spaceship - the Moonshot. It won&apos;t be an easy task though... <br />
+            Fight aliens, monsters, ghosts and other deadly creatures along the way to reach the Moonshot and all its
+            secrets.
           </TextCustom>
         </BoxCardWithoutBorder>
         <BoxCardWithoutBorder>
