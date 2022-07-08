@@ -55,7 +55,7 @@ const GamePlayList = [
   },
 ]
 
-export const GamePlay: React.FC = () => {
+export const GamePlayExplanation: React.FC = () => {
   return (
     <ComponentWrapper padding={'24px'}>
       <ContainerColumn>
