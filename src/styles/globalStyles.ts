@@ -290,7 +290,40 @@ export const ResponsiveBoxCard = styled(BoxCard)`
   }
 `
 
-export const ResponsiveProductBoxCard = styled(BoxCard)`
+export const BoxCardNonHover = styled.div<{
+  flexDirection?: TFlexDirections
+  justifyContent?: TFlexJustifyContents
+  alignItems?: TFlexAlignItems
+  boxWidth?: string
+  boxHeight?: string
+  textAlign?: string
+  border?: string
+  borderRadius?: string
+  backgroundColor?: string
+  padding?: string
+  margin?: string
+  borderHover?: string
+  backgroundHover?: string
+  shadowColor?: string
+}>`
+  display: flex;
+  flex-direction: ${({ flexDirection }) => (flexDirection ? flexDirection : 'row')};
+  justify-content: ${({ justifyContent }) => (justifyContent ? justifyContent : 'center')};
+  align-items: ${({ alignItems }) => (alignItems ? alignItems : 'center')};
+  width: ${({ boxWidth }) => (boxWidth ? boxWidth : 'fit-content')};
+  height: ${({ boxHeight }) => (boxHeight ? boxHeight : 'auto')};
+  text-align: ${({ textAlign }) => (textAlign ? textAlign : 'center')};
+  padding: ${({ padding }) => (padding ? padding : '10px')};
+  margin: ${({ margin }) => (margin ? margin : '12px')};
+  border-radius: ${({ borderRadius }) => (borderRadius ? borderRadius : '10px')};
+  background-color: ${({ backgroundColor }) => (backgroundColor ? backgroundColor : 'none')};
+  border: ${({ border }) => (border ? border : '2px solid var(--secondary)')};
+  position: relative;
+  transition: height 0.5s ease-in-out;
+  box-sizing: borer-box;
+`
+
+export const ResponsiveProductBoxCard = styled(BoxCardNonHover)`
   @media screen and (max-width: ${size.laptop}) {
     width: 100%;
     margin-top: 30%;

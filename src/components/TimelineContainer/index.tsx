@@ -15,7 +15,7 @@ const TimelineWrapper = styled.div<{ width?: string }>`
 
 const VerticalLine = styled.div<{ backColor?: string }>`
   width: 5px;
-  height: 250px;
+  height: 170px;
   background-color: ${({ backColor }) => (backColor ? backColor : 'var(--secondary)')};
 `
 

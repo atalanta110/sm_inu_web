@@ -30,8 +30,9 @@ const Profile: React.FC = () => {
         mainTitle={'Leaderboards'}
         subTitle={'Moonshot Voyage'}
         summary={
-          "Moonshot Voyage is an upcoming launch title on the SMI Play platform. It's a top-down looter shooter game with a play-to-earn system based on SMI Play Token Items."
+          'Check the top 10 Moonshot Voyage players in every leaderboards category.<br /><br /> Current Season: Pre-Season'
         }
+        isClix={true}
       />
       <ComponentWrapper padding={'24px'}>
         <ContainerRow backgroundColor={'var(--dark-navy)'} padding={'10px 30px'}>

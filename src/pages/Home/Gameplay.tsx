@@ -1,59 +1,99 @@
-import React, { useState } from 'react'
-import styled from 'styled-components'
+import React from 'react'
 import { isMobile } from 'react-device-detect'
 import {
+  BoxCard,
   ComponentWrapper,
   ContainerColumn,
-  SpacerLarge,
+  ResponsiveContainer,
   TextCustom,
-  device,
   SubText,
   ImageContainer,
-  ResponsiveImageContainer,
-  BoxCardWithoutBorder,
+  ResponsiveBoxCard,
 } from '../../styles/globalStyles'
-import BANNER_THIRD from '../../assets/images/game/Fan_Art_-_Expedition.jpg'
-import { TimelineContainer } from '../../components/TimelineContainer'
+import ExpanableCard from '../../components/Cards/ExpandableCard'
+import SMI_EXPLAIN_ITEM_1 from '../../assets/images/game/Moonshot_Voyage_Image_1.png'
+import SMI_EXPLAIN_ITEM_2 from '../../assets/images/game/Moonshot_Voyage_Image_2.png'
+import SMI_EXPLAIN_ITEM_3 from '../../assets/images/game/Moonshot_Voyage_Image_3.png'
+import SMI_EXPLAIN_ITEM_4 from '../../assets/images/game/Moonshot_Voyage_Image_4.png'
+import SMI_EXPLAIN_ITEM_5 from '../../assets/images/game/Moonshot_Voyage_Image_1_-_Copy.png'
 
-const ResponsiveWrapper = styled(ContainerColumn)`
-  align-items: center;
-  @media ${device.laptop} {
-    flex-direction: row;
-    align-items: flex-start;
-  }
-`
-const cardItems = [
+const SMIExplainList = [
   {
-    cardTitle: 'Spaceship',
-    cardSubtitle:
-      'Your spaceship is your hub, where you can prepare your character for an expedition, check your mail, craft items, view your resources, upgrade your weapons and characters etc. There are many different ships available as Token Items which you can customize using furniture items.',
+    id: 1,
+    description: 'Expedition',
+    subDescription:
+      'Expedition is a Survival type game mode, where you defend your base against a seemingly endless swarm of enemies. At wave 1, 20 and 40 you can choose an upgrade that lasts until the end of the current expedition. The longer you can last, the more Moonscrap you will receive at the end. The goal is to survive until wave 50 which contains a powerful boss. Beating wave 50 of the expedition grants you a place in the Leaderboards and a Moonscrap bonus for completing the run.',
+    imgSrc: SMI_EXPLAIN_ITEM_1,
   },
   {
-    cardTitle: 'Expedition',
-    cardSubtitle:
-      'Expedition is a Tower Defense type game mode, where players defend their base against an endless swarm of enemies and bosses. Players receive Dust from defeating enemies, which they can use to place towers and buy upgrades with. After every boss wave, the difficulty of current expedition rises. The longer a player can last, the more Moonscrap they will receive at the end. Dust, towers, upgrades, score and difficulty will be reset after every expedition, so will be the Expedition level, which is randomly generated.',
+    id: 2,
+    description: 'Raids',
+    subDescription:
+      'Raids are longer levels full of enemies, puzzles and a boss fight at the end. Get to the end of the level and defeat the boss to receive Moonscrap. You need a Raid Token to gain a guaranteed 100 Moonscrap (1 NFT mint) after beating a Raid. You get 1 free Raid Token every day. You can also buy additional Raid Token codes on our website. Beating the Raid without spending a Raid Token will grant much lower rewards.',
+    imgSrc: SMI_EXPLAIN_ITEM_2,
   },
   {
-    cardTitle: 'Raids',
-    cardSubtitle:
-      'Raids are longer levels full of enemies, puzzles and a boss fight at the end. Get to the end of the level and defeat the boss to receive a Token Item. Each raid boss has a set list of available item drops which you can view before starting a raid. Players can enter a Raid for free once a day, otherwise a Raid Ticket is needed.',
+    id: 3,
+    description: 'Difficulty',
+    subDescription:
+      'Moonshot Voyage has a freeform difficulty level - you can choose your desired difficulty before starting an Expedition or a Raid from a range of 0-999.<br /><br /> The difficulty plays a part in a few ways:<br /> -It enhances Health and Damage of ALL enemies<br /> -It enhances the Moonscrap and XP values you get from playing<br /> -It determines your place on the leaderboards',
+    imgSrc: SMI_EXPLAIN_ITEM_3,
   },
   {
-    cardTitle: 'Combat',
-    cardSubtitle:
-      'Combat takes a huge part of Moonshot Voyage. It consists of shooting enemies using your character and a weapon of choice while dodging enemy attacks. Your starting character and weapon will be weak, so you should pay a lot of attention to upgrading and optimizing your setup. ',
+    id: 4,
+    description: 'Account XP',
+    subDescription:
+      'Your account can level up by gathering XP. You gain XP by playing Expeditions and Raids, as well as from holder rewards and login bonuses and other activities. Leveling up your account grants you  Upgrade Points (UP) which you can spend on upgrading your NFTs and some other rewards like Moonscrap or Raid Tokens on level milestones.',
+    imgSrc: SMI_EXPLAIN_ITEM_4,
+  },
+  {
+    id: 5,
+    description: 'Leaderboards',
+    subDescription:
+      'Placing on the Leaderboards is determined by a few factors:<br /><br /> <b>Difficulty</b> - this is the most important factor of placing on the leaderboards. If player A beats Expedition on Difficulty 120 while getting 800 points and player B beats Expedition on Difficulty 100 while getting 1200 points - player A will still be higher because he beat a higher difficulty.<br /><br /> <b>Points</b> - the Expedition has a scoring system, where it gives you points depending on how well you play. The most important factors it takes into calculations are:<br /> &nbsp;&middot; How many times you got hit<br /> &nbsp;&middot; How fast did you beat the Expedition<br /><br /> <b>Time</b> - if both player A and player B beat Expedition Difficulty 657 while getting 1000 points, the tie is broken by who did it first<br /><br /> Difficulty > Points > Time<br /><br /> Leaderboards rewards will be sent to ranked players from each leaderboards after every ranked season ends. Every player who places on a leaderboard is eligible for some kind of rewards (even the lowest placings will get something). Ranked seasons are projected to last about 3~4 months. The rewards can include: Moonscrap, special NFTs, placing in hall of fame, monetary rewards (in SMI) and many others.',
+    imgSrc: SMI_EXPLAIN_ITEM_5,
   },
 ]
 
-export const Gameplay: React.FC = () => {
-  const [selectedCard, setSelectedCard] = useState(1)
-  const cardSelect = (index: number) => {
-    setSelectedCard(index)
-  }
-
+export const SMIExplainItem: React.FC<{ url: string; description: string; subDescription: string }> = ({
+  url,
+  description,
+  subDescription,
+}) => {
   return (
-    <ComponentWrapper margin={'0 0 50px'}>
-      <ResponsiveWrapper justifyContent={'center'}>
+    <ResponsiveBoxCard
+      boxWidth={'100%'}
+      // boxHeight={'150px'}
+      border={'5px solid var(--light-navy-blue)'}
+      justifyContent={'flex-start'}
+      borderRadius={'5px'}
+      borderHover={'2px solid var(--secondary-opacity)'}
+      backgroundHover={'var(--dark-secondary)'}
+    >
+      <ImageContainer src={url} width={'75px'} borderRadius={'0'} objectFit={'contain'} margin={'0 20px 0 20px'} />
+      <ContainerColumn width={isMobile ? '100%' : '80%'} alignItems={'flex-start'} padding={'20px'}>
+        <TextCustom
+          fontSize={isMobile ? '1rem' : '1.25rem'}
+          fontWeight={600}
+          fontFamily={'RubikBold'}
+          lineHeight={1.1}
+          textAlign={'left'}
+        >
+          {description}
+        </TextCustom>
+        <TextCustom fontSize={isMobile ? '0.6rem' : '1.1rem'} fontWeight={300} lineHeight={1.3} textAlign={'left'}>
+          {/* {subDescription} */}
+          <div dangerouslySetInnerHTML={{ __html: subDescription }}></div>
+        </TextCustom>
+      </ContainerColumn>
+    </ResponsiveBoxCard>
+  )
+}
+
+export const GamePlay: React.FC = () => {
+  return (
+    <ComponentWrapper padding={'24px'}>
+      <ContainerColumn>
         <TextCustom
           fontSize={isMobile ? '2rem' : '3.5rem'}
           fontWeight={600}
@@ -62,35 +102,22 @@ export const Gameplay: React.FC = () => {
           textAlign={'center'}
           margin={'5% 0 2% 0'}
         >
-          Gameplay
+          Game play
         </TextCustom>
-      </ResponsiveWrapper>
-      <SpacerLarge />
-      <ResponsiveWrapper>
-        <BoxCardWithoutBorder>
-          <ResponsiveImageContainer
-            src={BANNER_THIRD}
-            width={'35%'}
-            objectFit={'cover'}
-            margin={'0 20px 0 20px'}
-            borderRadius={'0'}
-          />
-        </BoxCardWithoutBorder>
-        <ContainerColumn>
-          {cardItems.map((item, index) => {
+        <ResponsiveContainer>
+          {SMIExplainList.map((item) => {
             return (
-              <TimelineContainer
-                key={`card_${index}`}
-                cardTitle={item.cardTitle}
-                cardContent={item.cardSubtitle}
-                cardSelected={selectedCard >= index}
-                onMouseMove={() => cardSelect(index)}
-                onScroll={() => cardSelect(index)}
-              />
+              // <SMIExplainItem
+              //   key={item.id}
+              //   url={item.imgSrc}
+              //   description={item.description}
+              //   subDescription={item.subDescription}
+              // />
+              <ExpanableCard key={item.id} boxWidth={'100%'} title={item.description} content={item.subDescription} />
             )
           })}
-        </ContainerColumn>
-      </ResponsiveWrapper>
+        </ResponsiveContainer>
+      </ContainerColumn>
     </ComponentWrapper>
   )
 }

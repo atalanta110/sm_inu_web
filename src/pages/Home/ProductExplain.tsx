@@ -132,26 +132,26 @@ export const ProductExplain: React.FC = () => {
       <ResponsiveContainer>
         <ProductExplainItem
           src={FISH}
-          description={['Moonshot voyage', 'holder status']}
-          highlightText={'Fish'}
+          description={['', 'holder status']}
+          highlightText={'FISH'}
           hold={'1M'}
-          reward={'10 Moonscrap & Raid Token'}
+          reward={'10 Moonscrap & 1 Raid Token'}
           note={'Improved Minting Rates'}
         />
         <ProductExplainItem
           src={DOLPHINE}
-          description={['Moonshot voyage', 'holder status']}
-          highlightText={'Dolphin'}
+          description={['', 'holder status']}
+          highlightText={'DOLPHIN'}
           hold={'100M'}
-          reward={'25 Moonscrap & Raid Token'}
+          reward={'25 Moonscrap & 1 Raid Token'}
           note={'Mint Uncommon NFTs & Higher'}
         />
         <ProductExplainItem
           src={WHALE}
-          description={['Moonshot voyage', 'holder status']}
-          highlightText={'Whale'}
+          description={['', 'holder status']}
+          highlightText={'WHALE'}
           hold={'1B'}
-          reward={'50 Moonscrap & Raid Token'}
+          reward={'50 Moonscrap & 1 Raid Token'}
           note={'Mint Rare NFTs & Higher'}
         />
       </ResponsiveContainer>
