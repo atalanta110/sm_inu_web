@@ -4,7 +4,7 @@ import { IntroducingBox } from './IntroducingBox'
 import { Video } from './Video'
 import { PowerOfSMI } from './PowerOfSMI'
 import { ProductExplain } from './ProductExplain'
-import { GamePlay } from './GamePlay'
+// import { GamePlay } from './GamePlay'
 import { RoadMap } from './RoadMap'
 import { HowToPlay } from './HowToPlay'
 
@@ -16,7 +16,7 @@ const Home: React.FC = () => {
       <PowerOfSMI />
       <ProductExplain />
       <HowToPlay />
-      <GamePlay />
+      {/* <GamePlay /> */}
       <RoadMap />
     </PageWrapper>
   )
