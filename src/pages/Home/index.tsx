@@ -16,7 +16,7 @@ const Home: React.FC = () => {
       <PowerOfSMI />
       <ProductExplain />
       <HowToPlay />
-      <GamePlay />
+      {/* <GamePlay /> */}
       <RoadMap />
     </PageWrapper>
   )
