@@ -15,15 +15,21 @@ import BORDER_EFFECT_IMG from '../../assets/images/text-border-bottom-effect.svg
 import BANNER_IMG from '../../assets/images/banner3.png'
 import MAIN_BANNER_IMG from '../../assets/images/banner.png'
 
-const Banner: React.FC<{ mainTitle?: string; subTitle?: string; summary: string; isClix?: boolean }> = ({
+const Banner: React.FC<{ mainTitle?: string; subTitle?: string; summary: string; isClix?: boolean; src?: any }> = ({
   mainTitle,
   subTitle,
   summary,
   isClix,
+  src,
 }) => {
   return (
     <ContainerColumn>
-      <ImageContainer src={isClix ? BANNER_IMG : MAIN_BANNER_IMG} width={'100%'} borderRadius={'0'} margin={'0'} />
+      <ImageContainer
+        src={src ? src : isClix ? BANNER_IMG : MAIN_BANNER_IMG}
+        width={'100%'}
+        borderRadius={'0'}
+        margin={'0'}
+      />
       <ContainerRow position={'absolute'} padding={'0'} margin={'0'} justifyContent={'center'}>
         <ComponentWrapper margin={'50px 0 0'} padding={'24px'}>
           <ContainerRow>

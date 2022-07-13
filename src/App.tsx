@@ -9,6 +9,7 @@ const Header = lazy(() => import('./components/Header'))
 const Home = lazy(() => import('./pages/Home'))
 const LeaderBoards = lazy(() => import('./pages/LeaderBoards'))
 const Profile = lazy(() => import('./pages/Profile'))
+const Store = lazy(() => import('./pages/Store'))
 
 const App: React.FC = () => {
   return (
@@ -31,6 +32,7 @@ const App: React.FC = () => {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/leaderboards" element={<LeaderBoards />} />
+          <Route path="/store" element={<Store />} />
           <Route path="/profile" element={<Profile />} />
         </Routes>
       </Suspense>
