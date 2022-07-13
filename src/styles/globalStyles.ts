@@ -435,12 +435,14 @@ export const TextSubTitle = styled.span`
 `
 export const TextMain = styled.span<{
   color?: string
+  fontWeight?: string
+  margin?: string
 }>`
   color: ${({ color }) => (color ? color : 'var(--primary-text)')};
   font-size: 1.55rem;
-  font-weight: 700;
+  font-weight: ${({ fontWeight }) => (fontWeight ? fontWeight : '700')};
   line-height: 1.6;
-  margin: 1rem 0;
+  margin: ${({ margin }) => (margin ? margin : '1rem 0')};
   text-align: center;
 `
 export const TextDescription = styled.span<{
@@ -520,6 +522,7 @@ export const ImageContainer = styled.img<{
   objectFit?: string
   borderRadius?: string
   position?: string
+  border?: string
 }>`
   border-radius: ${({ borderRadius }) => (borderRadius ? borderRadius : '50%')};
   width: ${({ width }) => (width ? width : '100%')};
@@ -529,6 +532,7 @@ export const ImageContainer = styled.img<{
   object-fit: ${({ objectFit }) => (objectFit ? objectFit : 'cover')};
   cursor: pointer;
   position: ${({ position }) => (position ? position : 'unset')};
+  border: ${({ border }) => (border ? border : 'none')};
 `
 
 export const ResponsiveImageContainer = styled(ImageContainer)`

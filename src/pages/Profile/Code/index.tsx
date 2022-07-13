@@ -97,7 +97,7 @@ const Code: React.FC = () => {
 
   return (
     <>
-      <ContainerColumn width={'50%'} padding={'0'} margin={'0'}>
+      {/* <ContainerColumn width={'50%'} padding={'0'} margin={'0'}>
         <ContainerColumn
           justifyContent={'flex-start'}
           alignItems={'flex-start'}
@@ -174,8 +174,8 @@ const Code: React.FC = () => {
             </ContainerColumn>
           )}
         </ContainerColumn>
-      </ContainerColumn>
-      <ContainerColumn width={'50%'} padding={'0'} margin={'0'}>
+      </ContainerColumn> */}
+      <ContainerColumn width={'100%'} padding={'0'} margin={'0'}>
         <ContainerColumn width={'100%'} padding={'0'} margin={'0'}>
           <ContainerColumn
             justifyContent={'flex-start'}
