@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
-import { ContainerRow } from '../../styles/globalStyles'
+import { ContainerRow, device } from '../../styles/globalStyles'
 import Logo from '../Icons/logo'
 import Menu from '../Menu'
 import { LoginButton } from '../Buttons/LoginButton'
@@ -10,6 +10,7 @@ import { RootState } from '../../state/reducers'
 import { actionCreators } from '../../state'
 import LoginModal from '../LoginModal'
 import WalletConnector from '../WalletConnection'
+import Hamburger from '../Icons/hamburgerIcon'
 
 const HeaderContainer = styled(ContainerRow)`
   padding: 0.5rem 1rem;
@@ -18,6 +19,13 @@ const HeaderContainer = styled(ContainerRow)`
   box-shadow: 0px 1px 10px var(--navy-blue-opacity);
   z-index: 999;
   position: fixed;
+`
+
+const LoginButtonContainer = styled(ContainerRow)`
+  display: none;
+  @media ${device.laptop} {
+    display: flex;
+  }
 `
 
 const Header: React.FC = () => {
@@ -39,7 +47,7 @@ const Header: React.FC = () => {
       </ContainerRow>
       <ContainerRow justifyContent={'flex-end'}>
         <WalletConnector />
-        <ContainerRow width={'fit-content'} justifyContent={'flex-end'}>
+        <LoginButtonContainer width={'fit-content'} justifyContent={'flex-end'}>
           {globalState?.user_info?.username ? (
             <LoginButton
               width={'fit-content'}
@@ -63,7 +71,8 @@ const Header: React.FC = () => {
               Login
             </LoginButton>
           )}
-        </ContainerRow>
+        </LoginButtonContainer>
+        <Hamburger />
       </ContainerRow>
       <LoginModal />
     </HeaderContainer>
