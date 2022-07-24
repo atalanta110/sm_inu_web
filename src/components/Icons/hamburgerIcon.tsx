@@ -52,7 +52,7 @@ const HamburgerMenu: React.FC<{ setIsOpen: (isOpen: boolean) => void }> = ({ set
   return (
     <HamburgerMenuWrapper justifyContent={'flex-start'} onClick={() => setIsOpen(false)}>
       <HamburgerMenuItem label={'Leaderboards'} navLink={'leaderboards'} />
-      <HamburgerMenuItem label={'Store'} navLink={'store'} />
+      {/* <HamburgerMenuItem label={'Store'} navLink={'store'} />
       {globalState?.user_info?.username && <HamburgerMenuItem label={'Profile'} navLink={'profile'} />}
       {globalState?.user_info?.username ? (
         <LoginButton
@@ -76,7 +76,7 @@ const HamburgerMenu: React.FC<{ setIsOpen: (isOpen: boolean) => void }> = ({ set
         >
           Login
         </LoginButton>
-      )}
+      )} */}
     </HamburgerMenuWrapper>
   )
 }
