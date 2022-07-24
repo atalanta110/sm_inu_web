@@ -46,7 +46,7 @@ const Header: React.FC = () => {
         <Menu />
       </ContainerRow>
       <ContainerRow justifyContent={'flex-end'}>
-        <WalletConnector />
+        {/* <WalletConnector />
         <LoginButtonContainer width={'fit-content'} justifyContent={'flex-end'}>
           {globalState?.user_info?.username ? (
             <LoginButton
@@ -71,7 +71,7 @@ const Header: React.FC = () => {
               Login
             </LoginButton>
           )}
-        </LoginButtonContainer>
+        </LoginButtonContainer> */}
         <Hamburger />
       </ContainerRow>
       <LoginModal />

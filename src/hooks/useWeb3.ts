@@ -24,9 +24,9 @@ export function useEagerConnect() {
         })
       } else {
         if (isMobile && window.ethereum) {
-          activate(injected, undefined, true).catch(() => {
-            setTried(true)
-          })
+          // activate(injected, undefined, true).catch(() => {
+          setTried(true)
+          // })
         } else {
           setTried(true)
         }

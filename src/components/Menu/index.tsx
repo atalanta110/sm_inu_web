@@ -18,8 +18,8 @@ const Menu: React.FC = () => {
   return (
     <MenuContainer justifyContent={'flex-start'} width={'fit-content'}>
       <MenuItem to="/leaderboards">Leaderboards</MenuItem>
-      <MenuItem to="/store">Store</MenuItem>
-      {globalState?.user_info?.username && <MenuItem to="/profile">Profile</MenuItem>}
+      {/* <MenuItem to="/store">Store</MenuItem>
+      {globalState?.user_info?.username && <MenuItem to="/profile">Profile</MenuItem>} */}
     </MenuContainer>
   )
 }
